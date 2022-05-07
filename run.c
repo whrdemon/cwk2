@@ -47,7 +47,6 @@ int getlength(){
 }
 
 void run(int ut, int height, int length){
-
     int** map;
     int** mm;
     int aa;
