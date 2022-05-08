@@ -12,16 +12,14 @@ int getheight(){
     FILE *f = fopen("game.txt","r");
     int height = 0;
     char temp;
-    if(f == NULL){
-        printf("File not find.");
-        return 0;
-    }
+
     while(!feof(f)){
         temp= fgetc(f);
         if(temp == '\n'){
             height++;
         }
     }
+    fclose(f);
     return height;
 }
 
@@ -29,10 +27,7 @@ int getlength(){
     FILE *f = fopen("game.txt","r");
     int length = 0;
     char temp;
-    if(f == NULL){
-        printf("File not find.");
-        return 0;
-    }
+
     while(!feof(f)){
         temp= fgetc(f);
         if(temp == ','){
@@ -43,10 +38,13 @@ int getlength(){
             break;
         }
     }
+    fclose(f);
     return length;
 }
 
 void run(int ut, int height, int length){
+    FILE *pp= fopen("history.txt","w");
+    fclose(pp);
     int** map;
     int** mm;
     int aa;
@@ -58,8 +56,28 @@ void run(int ut, int height, int length){
     for (int i = 0; i < height; i++) {
         mm[i] = (int*)malloc(sizeof(int) * length);
     }
-    int times=0;
+    FILE *ff= fopen("game.txt","r");
+    char temp;
+    int x=0;
+    int y=0;
+    while(!feof(ff)){
+        temp= fgetc(ff);
+        if(temp=='1'||temp=='0'){
+            int xx= (int)temp-(int)'0';
+            map[x][y]= xx;
 
+            y++;
+            if(y==length){
+                y=0;
+            }
+        }
+        else if(temp=='\n'){
+            x++;
+        }
+    }
+
+    int times=0;
+    fclose(ff);
     while(times<ut){
         for (int row = 0; row < height; row++) {
             for (int  col= 0; col < length; col++) {
@@ -171,7 +189,21 @@ void run(int ut, int height, int length){
 
         }
         times++;
-    }
+        FILE *p= fopen("history.txt","a");
+        for(int a=0;a< height;a++){
+            for(int b=0;b<length;b++){
+                if(b!=length-1){
+                    fprintf(p,"%i",map[a][b]);
+                    fprintf(p,",");}
+                else{
+                    fprintf(p,"%i",map[a][b]);
+                    fprintf(p,"\n");}
+            }
+            }
+        fclose(p);
+        }
+
+
     for(int a=0;a< height;a++){
         for(int b=0;b<length;b++){
             printf("%i",map[a][b]);
