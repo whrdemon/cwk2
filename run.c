@@ -27,7 +27,7 @@ int getlength(){
     FILE *f = fopen("game.txt","r");
     int length = 0;
     char temp;
-
+    int l;
     while(!feof(f)){
         temp= fgetc(f);
         if(temp == ','){
@@ -35,11 +35,17 @@ int getlength(){
         }
         else if(temp == '\n'){
             length++;
+            if(length>l){
+                l=length;
+            }
+            length=0;
+        }
+        else if(temp == NULL){
             break;
         }
     }
     fclose(f);
-    return length;
+    return l;
 }
 
 void run(int ut, int height, int length){
