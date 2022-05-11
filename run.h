@@ -6,4 +6,3 @@ int getheight();
 int getlength();
 void run(int ut, int height, int length);
 #endif //CWK2_REN_H
-

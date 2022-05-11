@@ -46,6 +46,7 @@ int getlength(){
     }
     fclose(f);
     return l;
+
 }
 
 void run(int ut, int height, int length){
