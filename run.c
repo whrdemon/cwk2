@@ -9,6 +9,7 @@ int gettimes(){
     return times;
 
 }
+
 int getheight(){
     FILE *f = fopen("game.txt","r");
     int height = 0;
@@ -33,7 +34,7 @@ int getlength(){
     FILE *f = fopen("game.txt","r");
     int length = 0;
     char temp;
-    int l;
+
     if(f == NULL){
         return -1;
     }
@@ -44,25 +45,20 @@ int getlength(){
         }
         else if(temp == '\n'){
             length++;
-            if(length>l){
-                l=length;
-            }
-            length=0;
-        }
-        else if(temp == NULL){
             break;
         }
+
     }
     fclose(f);
-    return l;
+    return length;
 
 }
 
 void run(int ut, int height, int length){
     FILE *pp= fopen("history.txt","w");
     fclose(pp);
-    int** map;
-    int** mm;
+    int **map;
+    int **mm;
     int aa;
     map = (int**)malloc(sizeof(int*) * height);
     for (int i = 0; i < height; i++) {
