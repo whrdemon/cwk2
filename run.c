@@ -1,18 +1,22 @@
 #include <stdio.h>
 #include <malloc.h>
+#include <ctype.h>
 #include "run.h"
 int gettimes(){
     int times;
     printf("please enter the times:");
     scanf("%i",&times);
     return times;
+
 }
 
 int getheight(){
     FILE *f = fopen("game.txt","r");
     int height = 0;
     char temp;
-
+    if(f == NULL){
+        return -1;
+    }
     while(!feof(f)){
         temp= fgetc(f);
         if(temp == '\n'){
@@ -20,6 +24,9 @@ int getheight(){
         }
     }
     fclose(f);
+    if(height==0){
+        return 0;
+    }
     return height;
 }
 
@@ -28,6 +35,9 @@ int getlength(){
     int length = 0;
     char temp;
     int l;
+    if(f == NULL){
+        return -1;
+    }
     while(!feof(f)){
         temp= fgetc(f);
         if(temp == ','){

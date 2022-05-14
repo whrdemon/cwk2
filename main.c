@@ -3,11 +3,20 @@
 #include <string.h>
 #include "run.h"
 int main(){
-    FILE *f= fopen("game.txt","r");
-    if(f == NULL){
-        printf("File not find.");
+    int a;
+    if(getlength()==-1||getheight()==-1){
+        printf("File not found.");
         return 0;
     }
-    fclose(f);
-    run(gettimes(),getheight(),getlength());
+    if(getheight()==0){
+        printf("The file is null.");
+        return 0;
+
+    }
+    a=gettimes();
+    if(a==-1){
+        printf("Please enter a positive integer.");
+        return 0;
+    }
+    run(a,getheight(),getlength());
 }
