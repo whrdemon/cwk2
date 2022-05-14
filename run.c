@@ -9,7 +9,6 @@ int gettimes(){
     return times;
 
 }
-
 int getheight(){
     FILE *f = fopen("game.txt","r");
     int height = 0;

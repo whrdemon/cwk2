@@ -3,6 +3,7 @@
 #include <string.h>
 #include "run.h"
 int main(){
+
     int a;
     if(getlength()==-1||getheight()==-1){
         printf("File not found.");
