@@ -201,6 +201,18 @@ void run(int ut, int height, int length){
 
         }
         times++;
+        FILE *ppp= fopen("h.txt","w");
+        for(int a=0;a< height;a++){
+            for(int b=0;b<length;b++){
+                if(b!=length-1){
+                    fprintf(ppp,"%i",map[a][b]);
+                    fprintf(ppp,",");}
+                else{
+                    fprintf(ppp,"%i",map[a][b]);
+                    fprintf(ppp,"\n");}
+            }
+        }
+        fclose(ppp);
         FILE *p= fopen("history.txt","a");
         for(int a=0;a< height;a++){
             for(int b=0;b<length;b++){

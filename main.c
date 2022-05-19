@@ -2,7 +2,11 @@
 #include <malloc.h>
 #include <string.h>
 #include "run.h"
-int main(){
+#include <SDL2/SDL.h>
+#include "SDL.h"
+int main(int argc, char* args[]){
+    sdl();
+
     int a;
     if(getlength()==-1||getheight()==-1){
         printf("File not found.");
@@ -20,3 +24,11 @@ int main(){
     }
     run(a,getheight(),getlength());
 }
+//#include <stdio.h>
+//#include "SDL.h"
+//
+//int main(int argc, char *argv[])
+//{
+//    sdl();
+//    return 0;
+//}
