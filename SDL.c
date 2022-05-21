@@ -10,13 +10,29 @@ int sdl() {
     fclose(pp);
     int length, height, c, d,ut,uu;
     printf("Please enter the width:");
-    scanf("%i", &length);
+    int q = scanf("%i", &length);
+    if(q==0){
+        printf("Please enter a positive integer.");
+        return 0;
+    }
     printf("Please enter the length:");
-    scanf("%i", &height);
+    q = scanf("%i", &height);
+    if(q==0){
+        printf("Please enter a positive integer.");
+        return 0;
+    }
     printf("Please enter the times:");
-    scanf("%i",&ut);
+    q = scanf("%i",&ut);
+    if(q==0){
+        printf("Please enter a positive integer.");
+        return 0;
+    }
     printf("Please enter the stay time(ms):");
-    scanf("%i",&uu);
+    q = scanf("%i",&uu);
+    if(q==0){
+        printf("Please enter a positive integer.");
+        return 0;
+    }
     int map[height][length];
     int mm[height][length];
     for (int bb = 0; bb < height; bb++) {
@@ -28,7 +44,7 @@ int sdl() {
     d = 800 / height;
     SDL_Window *sdl_window;
     SDL_Renderer *renderer;
-    int quit = 1;
+
     SDL_Event event;
     // 0 init sdl
     SDL_Init(SDL_INIT_VIDEO);
@@ -141,7 +157,8 @@ int sdl() {
                         break;
                     }
                     else if(event.key.keysym.sym == SDLK_RIGHT){
-                        uu=uu-100;
+                      if(uu>=200){
+                            uu=uu-100;}
                         break;
                     }
                     else if(event.key.keysym.sym == SDLK_LEFT){
@@ -262,6 +279,8 @@ int sdl() {
 
             }
             times++;
+
+
             int c, d;
             c = 800 / length;
             d = 800 / height;
@@ -293,14 +312,23 @@ int sdl() {
                 }
             }
 
+            int oo=0;
+            for (int a = 0; a < height; a++) {
+                for (int b = 0; b < length; b++) {
+                    if(map[a][b] ==1){
+                        oo++;
+                    }
+                }
 
+            }
 
             // show window
             SDL_RenderPresent(renderer);
-
+            printf("Times:%i\n",times);
+            printf("Lived cells:%i\n",oo);
             SDL_Delay(uu);
 
-            FILE *p= fopen("history.txt","a");
+            FILE *p= fopen("history.txt","w");
             for(int a=0;a< height;a++){
                 for(int b=0;b<length;b++){
                     if(b!=length-1){
@@ -311,7 +339,7 @@ int sdl() {
                         fprintf(p,"\n");}
                 }
             }
-            fprintf(p,"\n");
+
             fclose(p);
         }
         else{
@@ -326,11 +354,23 @@ int sdll(){
     fclose(pp);
     int length, height, c, d,uu;
     printf("Please enter the width:");
-    scanf("%i", &length);
+    int q = scanf("%i", &length);
+    if(q==0){
+        printf("Please enter a positive integer.");
+        return 0;
+    }
     printf("Please enter the length:");
-    scanf("%i", &height);
+    q = scanf("%i", &height);
+    if(q==0){
+        printf("Please enter a positive integer.");
+        return 0;
+    }
     printf("Please enter the stay time(ms):");
-    scanf("%i",&uu);
+    q = scanf("%i",&uu);
+    if(q==0){
+        printf("Please enter a positive integer.");
+        return 0;
+    }
     int map[height][length];
     int mm[height][length];
     for (int bb = 0; bb < height; bb++) {
@@ -423,7 +463,7 @@ int sdll(){
     SDL_Quit();
     int aaa;
     int times = 0;
-
+    int ttt=0;
 
 
     // 0 init sdl
@@ -457,7 +497,8 @@ int sdll(){
                         break;
                     }
                     else if(event.key.keysym.sym == SDLK_RIGHT){
-                        uu=uu-100;
+                      if(uu>=200){
+                            uu=uu-100;}
                         break;
                     }
                     else if(event.key.keysym.sym == SDLK_LEFT){
@@ -611,12 +652,22 @@ int sdll(){
             }
 
 
+            int oo=0;
+            for (int a = 0; a < height; a++) {
+                for (int b = 0; b < length; b++) {
+                    if(map[a][b] ==1){
+                        oo++;
+                    }
+                }
 
+            }
             // show window
+            ttt++;
             SDL_RenderPresent(renderer);
-
+            printf("Times:%i\n",ttt);
+            printf("Lived cells:%i\n",oo);
             SDL_Delay(uu);
-            FILE *p= fopen("history.txt","a");
+            FILE *p= fopen("history.txt","w");
             for(int a=0;a< height;a++){
                 for(int b=0;b<length;b++){
                     if(b!=length-1){
@@ -627,7 +678,7 @@ int sdll(){
                         fprintf(p,"\n");}
                 }
             }
-            fprintf(p,"\n");
+
             fclose(p);
             int op=0;
             for (int a = 0; a < height; a++) {

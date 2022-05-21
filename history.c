@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include <malloc.h>
-#include "run.h"
+
+#include "history.h"
 #include <SDL2/SDL.h>
-int gettimes(){
+int gettimesh(){
     int times;
     printf("please enter the times:");
     int x= scanf("%i",&times);
@@ -13,8 +13,8 @@ int gettimes(){
 
 }
 
-int getheight(){
-    FILE *f = fopen("game.txt","r");
+int getheighth(){
+    FILE *f = fopen("history.txt","r");
     int height = 0;
     char temp;
     if(f == NULL){
@@ -33,8 +33,8 @@ int getheight(){
     return height;
 }
 
-int getlength(){
-    FILE *f = fopen("game.txt","r");
+int getlengthh(){
+    FILE *f = fopen("history.txt","r");
     int length = 0;
     char temp;
 
@@ -57,16 +57,14 @@ int getlength(){
 
 }
 
-void run(int ut, int height, int length){
+void runh(int ut, int height, int length){
     int uu;
     printf("Please enter the stay time(ms):");
-    int q=scanf("%i",&uu);
+    int q = scanf("%i",&uu);
     if(q==0){
         printf("Please enter a positive integer.");
         return ;
     }
-    FILE *pp= fopen("history.txt","w");
-    fclose(pp);
     int **map;
     int **mm;
     int aa;
@@ -78,7 +76,7 @@ void run(int ut, int height, int length){
     for (int i = 0; i < height; i++) {
         mm[i] = (int*)malloc(sizeof(int) * length);
     }
-    FILE *ff= fopen("game.txt","r");
+    FILE *ff= fopen("history.txt","r");
     char temp;
     int x=0;
     int y=0;
@@ -306,6 +304,12 @@ void run(int ut, int height, int length){
             SDL_Delay(uu);
 
 
+            // show window
+
+
+
+
+
             FILE *p= fopen("history.txt","w");
             for(int a=0;a< height;a++){
                 for(int b=0;b<length;b++){
@@ -325,7 +329,7 @@ void run(int ut, int height, int length){
             zz++;
         }
 
-        }
+    }
 
 
 
@@ -338,7 +342,7 @@ void run(int ut, int height, int length){
     }
     free(mm);
 }
-void runn( int height, int length){
+void runnh( int height, int length){
     int uu;
     printf("Please enter the stay time(ms):");
     int q = scanf("%i",&uu);
@@ -346,13 +350,11 @@ void runn( int height, int length){
         printf("Please enter a positive integer.");
         return ;
     }
-    FILE *pp= fopen("history.txt","w");
-    fclose(pp);
     int map[height][length];
     int mm[height][length];
     int aa;
 
-    FILE *ff= fopen("game.txt","r");
+    FILE *ff= fopen("history.txt","r");
     char temp;
     int x=0;
     int y=0;
@@ -540,6 +542,10 @@ void runn( int height, int length){
             c=800/length;
             d=800/height;
 
+
+
+
+
             SDL_Rect rect = {0, 0, 800, 800};
             SDL_RenderDrawRect(renderer, &rect);
 
@@ -613,4 +619,4 @@ void runn( int height, int length){
 
 
 
-   }
+}
