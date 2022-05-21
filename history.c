@@ -12,7 +12,6 @@ int gettimesh(){
         return -1;
 
 }
-
 int getheighth(){
     FILE *f = fopen("history.txt","r");
     int height = 0;

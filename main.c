@@ -15,7 +15,6 @@ int main(int argc, char* args[]) {
     printf("Please enter the choice:");
     scanf("%s", &choose);
     cs=strlen(choose);
-
     if(cs>=2||(choose[0]!='1'&&choose[0]!='2'&&choose[0]!='3'&&choose[0]!='4')){
         printf("Invalid option!");
         return 0;

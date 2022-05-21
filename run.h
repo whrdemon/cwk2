@@ -1,7 +1,6 @@
 
 #ifndef CWK2_REN_H
 #define CWK2_REN_H
-
 int gettimes();
 int getheight();
 int getlength();

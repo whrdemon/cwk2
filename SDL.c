@@ -4,7 +4,6 @@
 #include <SDL2/SDL.h>
 #include <stdbool.h>
 
-
 int sdl() {
     FILE *pp= fopen("history.txt","w");
     fclose(pp);

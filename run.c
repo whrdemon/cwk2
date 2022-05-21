@@ -120,7 +120,7 @@ void run(int ut, int height, int length){
     //3 set renderer color (set background color  Blue)
     SDL_SetRenderDrawColor(renderer, 0, 0, 255, SDL_ALPHA_OPAQUE);
 
-    //4 clear color
+
     SDL_RenderClear(renderer);
     int de=0;
     while(times<ut){
